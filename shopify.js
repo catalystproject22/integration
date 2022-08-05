@@ -46,7 +46,7 @@ var AffTracker = {
   },
   execute: function(){
     var xpndr = this.readInfluencerId();
-    setCookie("xpndr", xpndr, 365);
+    if (xpndr) setCookie("xpndr", xpndr, 365);
   }
 }
 
