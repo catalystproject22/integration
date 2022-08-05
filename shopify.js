@@ -1,5 +1,4 @@
 const BASE_URL = 'https://integration-catalyst.herokuapp.com/api/v1/order';
-const AF_URL = window.location.host;
 const AF_SCRIPT = "shopify"
 
 function setCookie(cookie_key, cookie_value, days_of_expiration) {
@@ -31,8 +30,6 @@ var API = {
     xhttp.onreadystatechange = function() {};
     xhttp.open("POST", BASE_URL, true);
     xhttp.setRequestHeader("Content-type", "application/json");
-    data['currentPageURL'] = window.location.href;
-    data['webSiteURL']     = AF_URL;
     data['influencerUsername'] = getCookie("xpndr");
     data['scriptName'] = AF_SCRIPT;
     xhttp.send(JSON.stringify(data));
