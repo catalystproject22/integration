@@ -31,11 +31,10 @@ var API = {
     xhttp.onreadystatechange = function() {};
     xhttp.open("POST", BASE_URL, true);
     xhttp.setRequestHeader("Content-type", "application/json");
-    data['currentPageUrl'] = btoa(window.location.href);
-    data['baseUrl']    = btoa(AF_URL);
+    data['currentPageURL'] = window.location.href;
+    data['webSiteURL']     = AF_URL;
     data['influencerUsername'] = getCookie("xpndr");
     data['scriptName'] = AF_SCRIPT;
-    //var request = Object.keys(data).map(key => key + '=' + data[key]).join('&');
     xhttp.send(JSON.stringify(data));
   }
 }
