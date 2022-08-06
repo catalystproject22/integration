@@ -42,7 +42,8 @@ var AffTracker = {
     return url.searchParams.get("xpndr");
   },
   addOrder: function(data){
-    API.post(data);
+    var xpndrCookie = getCookie("xpndr");
+    if(xpndrCookie) API.post(data);
   },
   execute: function(){
     var xpndr = this.readInfluencerId();
