@@ -1,4 +1,4 @@
-const BASE_URL = 'https://integration-catalyst.herokuapp.com/api/v1/order';
+const BASE_URL = 'https://dev-api-somosxpanda.herokuapp.com/api/v1/order';
 const AF_SCRIPT = "shopify"
 
 function setCookie(cookie_key, cookie_value, days_of_expiration) {
