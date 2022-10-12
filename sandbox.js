@@ -53,16 +53,14 @@ var AffTracker = {
 
 AffTracker.execute();
 
-function testLiquidFromExternalFile(){
-  console.log("{{discounts_amount}}")
-  {% for cart_level_discount in cart_level_discount_applications%}
-  console.log("{{cart_level_discount.target_selection}}")
-  console.log("{{cart_level_discount.target_type}}")
-  console.log("{{cart_level_discount.value}}")
-  console.log("{{cart_level_discount.value_type}}")
-  console.log("{{cart_level_discount.total_allocated_amount}}")
-  console.log("{{cart_level_discount.title}}")
-  {% endfor %}
+var products_test = [];
+
+function test(variable_test){
+  var product_test = {};
+  product_test['variable_test'] = variable_test;
+  products_test.push(product_test);
 }
+
+console.log(products_test);
 
 
