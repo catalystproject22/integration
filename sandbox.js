@@ -59,6 +59,7 @@ function test(variable_test){
   var product_test = {};
   product_test['variable_test'] = variable_test;
   products_test.push(product_test);
+  console.log("TEST");
 }
 
 console.log(products_test);
