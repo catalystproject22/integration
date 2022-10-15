@@ -36,6 +36,7 @@ var API = {
   }
 }
 
+let orderProducts = [];
 var AffTracker = {
   readInfluencerId: function(){
     var url = new URL(document.location.href);
@@ -44,6 +45,16 @@ var AffTracker = {
   addOrder: function(data){
     var xpndrCookie = getCookie("xpndr");
     if(xpndrCookie) API.post(data);
+  },
+  addOrderProduct: function(product_id, ){
+    let product = {};
+    product['id'] = product_id
+    product['sku'] = "{{ line_item.sku }}" 
+    product['title'] = "{{ line_item.title }}"
+    product['price'] = "{{ line_item.price }}"
+    product['quantity'] = "{{ line_item.quantity }}"
+    product['brand'] = "{{ line_item.vendor }}"
+    product['variant'] = "{{ line_item.variant }}"
   },
   execute: function(){
     var xpndr = this.readInfluencerId();
