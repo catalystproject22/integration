@@ -68,7 +68,7 @@ var AffTracker = {
     product['discounts'] = discounts;
   },
   addOrderProduct: function(product_id, sku, title, price, quantity, vendor, variant, discounts ){
-    orderProductObject = buildOrderProductObject(product_id, sku, title, price, quantity, vendor, variant, discounts);
+    orderProductObject = AffTracker.buildOrderProductObject(product_id, sku, title, price, quantity, vendor, variant, discounts);
     orderProducts.push(orderProductObject);
   },
   buildProductDiscountObject: function(amount, value, value_type){
