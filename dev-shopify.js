@@ -66,6 +66,7 @@ var AffTracker = {
     product['brand'] = vendor;
     product['variant'] = variant;
     product['discounts'] = discounts;
+    return product;
   },
   addOrderProduct: function(product_id, sku, title, price, quantity, vendor, variant, discounts ){
     orderProductObject = AffTracker.buildOrderProductObject(product_id, sku, title, price, quantity, vendor, variant, discounts);
