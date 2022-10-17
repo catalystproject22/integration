@@ -42,19 +42,41 @@ var AffTracker = {
     var url = new URL(document.location.href);
     return url.searchParams.get("xpndr");
   },
-  addOrder: function(data){
+  buildOrderObject: function(order_id, order_name, url, currency, total_price, products){
+    order = {};
+    order['orderId'] = order_id;
+    order['orderName'] = order_name;
+    order['shopURL'] = url;
+	  order['orderCurrency'] = currency; 
+	  order['orderTotal'] = total_price;
+    order['products'] = products;
+    return order;
+  },
+  addOrder: function(order_id, order_name, url, currency, total_price, products){
     var xpndrCookie = getCookie("xpndr");
     if(xpndrCookie) API.post(data);
   },
-  addOrderProduct: function(product_id, ){
+  buildOrderProductObject: function (product_id, sku, title, price, quantity, vendor, variant, discounts){
     let product = {};
-    product['id'] = product_id
-    product['sku'] = "{{ line_item.sku }}" 
-    product['title'] = "{{ line_item.title }}"
-    product['price'] = "{{ line_item.price }}"
-    product['quantity'] = "{{ line_item.quantity }}"
-    product['brand'] = "{{ line_item.vendor }}"
-    product['variant'] = "{{ line_item.variant }}"
+    product['id'] = product_id;
+    product['sku'] = sku;
+    product['title'] = title;
+    product['price'] = price;
+    product['quantity'] = quantity;
+    product['brand'] = vendor;
+    product['variant'] = variant;
+    product['discounts'] = discounts;
+  },
+  addOrderProduct: function(product_id, sku, title, price, quantity, vendor, variant, discounts ){
+    orderProductObject = buildOrderProductObject(product_id, sku, title, price, quantity, vendor, variant, discounts);
+    orderProducts.push(orderProductObject);
+  },
+  buildProductDiscountObject: function(amount, value, value_type){
+    let discount = {};
+    discount['amount'] = amount;
+    discount['value'] = value;
+    discount['valueType'] = value_type;
+    return discount;
   },
   execute: function(){
     var xpndr = this.readInfluencerId();
