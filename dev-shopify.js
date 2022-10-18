@@ -54,9 +54,8 @@ var AffTracker = {
     return order;
   },
   addOrder: function(data){
-    // var xpndrCookie = getCookie("xpndr");
-    // if(xpndrCookie) API.post(data);
-    console.log(data);
+    var xpndrCookie = getCookie("xpndr");
+    if(xpndrCookie) API.post(data);
   },
   buildOrderProductObject: function (product_id, sku, title, price, quantity, vendor, variant, discounts){
     let product = {};
