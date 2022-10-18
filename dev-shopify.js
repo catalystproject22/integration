@@ -37,6 +37,7 @@ var API = {
 }
 
 let orderProducts = [];
+let orderDiscounts = [];
 var AffTracker = {
   readInfluencerId: function(){
     var url = new URL(document.location.href);
@@ -52,9 +53,10 @@ var AffTracker = {
     order['products'] = products;
     return order;
   },
-  addOrder: function(order_id, order_name, url, currency, total_price, products){
-    var xpndrCookie = getCookie("xpndr");
-    if(xpndrCookie) API.post(data);
+  addOrder: function(data){
+    // var xpndrCookie = getCookie("xpndr");
+    // if(xpndrCookie) API.post(data);
+    console.log(data);
   },
   buildOrderProductObject: function (product_id, sku, title, price, quantity, vendor, variant, discounts){
     let product = {};
@@ -78,6 +80,16 @@ var AffTracker = {
     discount['value'] = value;
     discount['valueType'] = value_type;
     return discount;
+  },
+  buildOrderDiscountObject: function(target_selection, target_type, value, value_type, total_allocated_amount, title){
+    let order_discount = {};
+    order_discount['targetSelection'] = target_selection;
+    order_discount['targetType'] = target_type;
+    order_discount['value'] = value;
+    order_discount['valueType'] = value_type;
+    order_discount['totalAllocatedAmount'] = total_allocated_amount;
+    order_discount['title'] = title;
+    return order_discount;
   },
   execute: function(){
     var xpndr = this.readInfluencerId();
