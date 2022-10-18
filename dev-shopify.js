@@ -66,7 +66,7 @@ var AffTracker = {
     product['quantity'] = quantity;
     product['brand'] = vendor;
     product['variant'] = variant;
-    product['discounts'] = discounts;
+    product['productDiscounts'] = discounts;
     return product;
   },
   addOrderProduct: function(product_id, sku, title, price, quantity, vendor, variant, discounts ){
