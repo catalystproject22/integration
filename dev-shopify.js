@@ -58,8 +58,8 @@ var AffTracker = {
     var xpndrCookie = getCookie("xpndr");
     if(xpndrCookie){
       console.log(data);
-      API.post(data, LAMBDA_URL);
-      // API.post(data, BASE_URL);
+      // API.post(data, LAMBDA_URL);
+      API.post(data, BASE_URL);
     }
   },
   buildOrderProductObject: function (product_id, sku, title, price, quantity, vendor, variant, discounts){
