@@ -1,4 +1,5 @@
 const BASE_URL = 'https://dev-api-somosxpanda.herokuapp.com/api/v1/order';
+const LAMBDA_URL = 'https://veiuob6e82.execute-api.us-east-1.amazonaws.com/default/orderTrackingMongo';
 const AF_SCRIPT = "shopify"
 
 function setCookie(cookie_key, cookie_value, days_of_expiration) {
@@ -25,10 +26,10 @@ function getCookie(cname) {
 }
 
 var API = {
-  post: function(data){
+  post: function(data, url){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {};
-    xhttp.open("POST", BASE_URL, true);
+    xhttp.open("POST", url, true);
     xhttp.setRequestHeader("Content-type", "application/json");
     data['influencerUsername'] = getCookie("xpndr");
     data['scriptName'] = AF_SCRIPT;
@@ -55,7 +56,10 @@ var AffTracker = {
   },
   addOrder: function(data){
     var xpndrCookie = getCookie("xpndr");
-    if(xpndrCookie) API.post(data);
+    if(xpndrCookie){
+      API.post(data, LAMBDA_URL);
+      API.post(data, BASE_URL);
+    }
   },
   buildOrderProductObject: function (product_id, sku, title, price, quantity, vendor, variant, discounts){
     let product = {};
