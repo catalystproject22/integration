@@ -57,6 +57,7 @@ var AffTracker = {
   addOrder: function(data){
     var xpndrCookie = getCookie("xpndr");
     if(xpndrCookie){
+      console.log(data);
       API.post(data, LAMBDA_URL);
       // API.post(data, BASE_URL);
     }
