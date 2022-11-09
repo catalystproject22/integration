@@ -1,6 +1,6 @@
-const BASE_URL = "https://dev-api-somosxpanda.herokuapp.com/api/v1/order";
-const LAMBDA_URL =
-  "https://veiuob6e82.execute-api.us-east-1.amazonaws.com/default/orderTrackingMongo";
+const BASE_URL = "https://veiuob6e82.execute-api.us-east-1.amazonaws.com/default";
+const MAIN_PATH = "/registerOrder";
+const BACKUP_PATH = "/orderTrackingMongo";
 const AF_SCRIPT = "shopify";
 
 function setCookie(cookie_key, cookie_value, days_of_expiration) {
@@ -73,14 +73,14 @@ const AffTracker = {
   sendToLambda: function (data) {
     const xpndrCookie = getCookie("xpndr");
     if (xpndrCookie) {
-      API.post(data, LAMBDA_URL);
+      API.post(data, BASE_URL+BACKUP_PATH);
     }
   },
   addOrder: function (data) {
     const xpndrCookie = getCookie("xpndr");
     if (xpndrCookie) {
       console.log(data);
-      API.post(data, BASE_URL);
+      API.post(data, BASE_URL+MAIN_PATH);
     }
   },
   buildOrderProductObject: function (
