@@ -30,7 +30,8 @@ var API = {
   post: function (data, url) {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-
+    data['influencerUsername'] = getCookie("xpndr");
+    data['scriptName'] = AF_SCRIPT;
     const requestOptions = {
       method: "POST",
       headers: myHeaders,
