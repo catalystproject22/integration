@@ -1,6 +1,6 @@
 const BASE_URL = "https://veiuob6e82.execute-api.us-east-1.amazonaws.com/default";
-const MAIN_PATH = "/registerOrder";
-const BACKUP_PATH = "/orderTrackingMongo";
+const MAIN_PATH = "/registerOrder?env=dev";
+const BACKUP_PATH = "/orderTrackingMongo?env=dev";
 const AF_SCRIPT = "shopify";
 
 function setCookie(cookie_key, cookie_value, days_of_expiration) {
